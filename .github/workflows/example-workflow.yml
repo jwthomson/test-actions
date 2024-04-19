@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Some build action
-      run: echo ${{ GITHUB_SHA }}
+      run: echo $env:GITHUB_SHA
 
   release:
 
@@ -26,4 +26,4 @@ jobs:
 
     steps:
     - name: Some publish action
-      run: echo ${{ GITHUB_SHA }}
+      run: echo $env:GITHUB_SHA
