@@ -1,0 +1,29 @@
+name: example-workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Some build action
+      run: echo ${{ GITHUB_SHA }}
+
+  release:
+
+    runs-on: ubuntu-latest
+    
+    needs: build
+    if: ${{ github.event.action == published }}
+
+    steps:
+    - name: Some publish action
+      run: echo ${{ GITHUB_SHA }}
