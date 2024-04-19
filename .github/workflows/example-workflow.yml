@@ -15,14 +15,14 @@ jobs:
 
     steps:
     - name: Some build action
-      run: echo $env:GITHUB_SHA
+      run: echo $env:GITHUB_SHA; echo ${{ github.event.action }}
 
   release:
 
     runs-on: ubuntu-latest
     
     needs: build
-    if: ${{ github.event.action == published }}
+    if: ${{ github.event.action == 'published' }}
 
     steps:
     - name: Some publish action
